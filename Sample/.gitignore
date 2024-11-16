@@ -40,10 +40,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-*.zip
-*.zip
-
-node_modules/
-/Backend/node_modules/
-/Frontend/node_modules/
-/Sample/.vscode

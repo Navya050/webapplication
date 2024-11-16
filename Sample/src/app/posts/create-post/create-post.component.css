@@ -1,0 +1,13 @@
+form {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  .showline{
+    width: 100%;
+    
+    border: 1px solid rgb(124, 119, 119);
+  }
