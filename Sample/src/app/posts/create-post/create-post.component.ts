@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, NgForm  } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Post } from '../posts.model';
 import { PostsService } from '../posts.service';
@@ -13,6 +13,7 @@ import { PostsService } from '../posts.service';
 export class CreatePostComponent implements OnInit{
   form: FormGroup;
   public posts:any;
+  @ViewChild('postForm') postForm!: NgForm;
   post: Post = {_id: '', title: '', content: ''}
   mode: string = 'create';
   private postId: string = '';
@@ -59,18 +60,20 @@ export class CreatePostComponent implements OnInit{
 
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      const { title, content } = this.form.value;
+  onSubmit(form: NgForm) {
+    if(form.invalid){
+      return;
+    }
+      const { title, content } = form.value;
       console.log('Form Submitted:', { title, content });
       if(this.mode == 'create'){
-        this.postService.createPost(this.form.value)
+        this.postService.createPost(form.value)
       }else{
-        this.postService.updatePost(this.postId, this.form.value).subscribe(() => {
+        this.postService.updatePost(this.postId, form.value).subscribe(() => {
           this.router.navigate(["/"])
         })
       }
       // You can handle the form data here (e.g., send it to a server)
-    }
+    
   }
 }

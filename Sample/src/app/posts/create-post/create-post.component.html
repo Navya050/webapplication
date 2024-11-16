@@ -1,20 +1,39 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="title" required>
-      <mat-error *ngIf="form.get('title')?.hasError('required')">Title is required.</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Content</mat-label>
-      <textarea matInput formControlName="content" required></textarea>
-      <mat-error *ngIf="form.get('content')?.hasError('required')">Content is required.</mat-error>
-    </mat-form-field>
-  
-    <button *ngIf="mode === 'create'" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
-    <button *ngIf="mode === 'edit'" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Update</button>
-    
-  </form>
+<form (submit)="onSubmit(postForm)" #postForm="ngForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input 
+      matInput 
+      name="title"
+      [ngModel]="post.title"
+      required
+      #title="ngModel">
+    <mat-error *ngIf="title.invalid && title.touched">Title is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Content</mat-label>
+    <textarea 
+      matInput 
+      name="content"
+      [ngModel]="post.content"
+      required
+      #content="ngModel"></textarea>
+    <mat-error *ngIf="content.invalid && content.touched">Content is required.</mat-error>
+  </mat-form-field>
+
+  <button 
+    *ngIf="mode === 'create'" 
+    mat-raised-button 
+    color="primary" 
+    type="submit" 
+    [disabled]="postForm.invalid">Submit</button>
+  <button 
+    *ngIf="mode === 'edit'" 
+    mat-raised-button 
+    color="primary" 
+    type="submit" 
+    [disabled]="postForm.invalid">Update</button>
+</form>
   <div class="showline">
 
   </div>
