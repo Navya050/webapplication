@@ -1,0 +1,46 @@
+<!-- <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let item of items">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ item.title }}</mat-panel-title>
+        <mat-panel-description>{{ item.description }}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="panel-content">
+        {{ item.content }}
+      </div>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="editItem(item)">Edit</button>
+        <button mat-button color="warn" (click)="deleteItem(item)">Delete</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion> -->
+           
+  
+  <mat-accordion *ngIf="posts.length > 0">
+    <mat-expansion-panel *ngFor="let post of posts">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ post.title }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <div class="post-content">
+        <div>
+          {{ post.content }}
+        </div>
+      </div>
+  
+      <!-- Line separator between content and footer -->
+      <div class="separator"></div>
+  
+      <!-- Footer with Edit and Delete buttons -->
+      <mat-expansion-panel-footer>
+        <div>
+          <button mat-button (click)="navigatetopost(post)">Edit</button>
+          <button mat-button color="warn" (click)="deletePost(post._id)">Delete</button>
+        </div>
+      </mat-expansion-panel-footer>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <span class="nopost" *ngIf="posts.length == 0">No Post added yet</span>
+  
