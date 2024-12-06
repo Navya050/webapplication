@@ -1,0 +1,46 @@
+<mat-card>
+  <form #signupForm="ngForm" (ngSubmit)="onSignUp(signupForm)">
+    <!-- Email Field -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        [(ngModel)]="signupData.email"
+        #email="ngModel"
+        required
+        email
+      />
+      <mat-error *ngIf="email.errors?.['required'] && email.touched">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="email.errors?.['email'] && email.touched">
+        Invalid email format
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Password Field -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        name="password"
+        [(ngModel)]="signupData.password"
+        #password="ngModel"
+        required
+        minlength="6"
+      />
+      <mat-error *ngIf="password.errors?.['required'] && password.touched">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="password.errors?.['minlength'] && password.touched">
+        Password must be at least 6 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit">Sign Up</button>
+  </form>
+</mat-card>

@@ -13,34 +13,37 @@
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion> -->
-           
-  
-  <mat-accordion *ngIf="posts.length > 0">
-    <mat-expansion-panel *ngFor="let post of posts">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{ post.title }}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-  
-      <div class="post-content">
-        <div>
-          {{ post.content }}
-        </div>
-      </div>
-  
-      <!-- Line separator between content and footer -->
-      <div class="separator"></div>
-  
-      <!-- Footer with Edit and Delete buttons -->
-      <mat-expansion-panel-footer>
-        <div>
-          <button mat-button (click)="navigatetopost(post)">Edit</button>
-          <button mat-button color="warn" (click)="deletePost(post._id)">Delete</button>
-        </div>
-      </mat-expansion-panel-footer>
-    </mat-expansion-panel>
-  </mat-accordion>
 
-  <span class="nopost" *ngIf="posts.length == 0">No Post added yet</span>
-  
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion *ngIf="posts?.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ post.title }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="post-content">
+      <div>
+        {{ post.content }}
+      </div>
+    </div>
+
+    <!-- Line separator between content and footer -->
+    <div class="separator"></div>
+
+    <!-- Footer with Edit and Delete buttons -->
+    <mat-expansion-panel-footer *ngIf="userIsAuthenticated">
+      <div>
+        <button mat-button (click)="navigatetopost(post)">Edit</button>
+        <button mat-button color="warn" (click)="deletePost(post._id)">
+          Delete
+        </button>
+      </div>
+    </mat-expansion-panel-footer>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<span class="nopost" *ngIf="posts?.length == 0 && !isLoading"
+  >No Post added yet</span
+>

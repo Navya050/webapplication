@@ -1,0 +1,48 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div class="news-container" *ngIf="!isLoading">
+  <mat-card *ngFor="let article of newsData" class="news-card">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <img
+          [src]="article.publisher?.favicon || 'assets/default-icon.png'"
+          alt="Publisher Logo"
+          class="favicon"
+        />
+      </div>
+      <mat-card-title
+        matTooltip="{{ article.title }}"
+        [matTooltipPosition]="'above'"
+        [matTooltipDisabled]="article.title.length <= 50"
+      >
+        {{
+          article.title.length > 50
+            ? (article.title | slice : 0 : 50) + "..."
+            : article.title
+        }}
+      </mat-card-title>
+      <mat-card-subtitle>{{ article.publisher?.name }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="article.thumbnail || 'assets/default-thumbnail.png'"
+      alt="News Image"
+    />
+    <mat-card-content>
+      <p>{{ article.excerpt }}</p>
+      <p>
+        <small>{{ article.date | date : "medium" }}</small>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a
+        mat-button
+        color="primary"
+        [href]="article.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Read More</a
+      >
+    </mat-card-actions>
+  </mat-card>
+</div>

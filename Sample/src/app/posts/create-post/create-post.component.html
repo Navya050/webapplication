@@ -1,39 +1,51 @@
-<form (submit)="onSubmit(postForm)" #postForm="ngForm">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<form *ngIf="!isLoading" (submit)="onSubmit(postForm)" #postForm="ngForm">
   <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
-    <input 
-      matInput 
+    <input
+      matInput
       name="title"
       [ngModel]="post.title"
       required
-      #title="ngModel">
-    <mat-error *ngIf="title.invalid && title.touched">Title is required.</mat-error>
+      #title="ngModel"
+    />
+    <mat-error *ngIf="title.invalid && title.touched"
+      >Title is required.</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Content</mat-label>
-    <textarea 
-      matInput 
+    <textarea
+      matInput
       name="content"
       [ngModel]="post.content"
       required
-      #content="ngModel"></textarea>
-    <mat-error *ngIf="content.invalid && content.touched">Content is required.</mat-error>
+      #content="ngModel"
+    ></textarea>
+    <mat-error *ngIf="content.invalid && content.touched"
+      >Content is required.</mat-error
+    >
   </mat-form-field>
 
-  <button 
-    *ngIf="mode === 'create'" 
-    mat-raised-button 
-    color="primary" 
-    type="submit" 
-    [disabled]="postForm.invalid">Submit</button>
-  <button 
-    *ngIf="mode === 'edit'" 
-    mat-raised-button 
-    color="primary" 
-    type="submit" 
-    [disabled]="postForm.invalid">Update</button>
+  <button
+    *ngIf="mode === 'create'"
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="postForm.invalid"
+  >
+    Submit
+  </button>
+  <button
+    *ngIf="mode === 'edit'"
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="postForm.invalid"
+  >
+    Update
+  </button>
 </form>
-  <div class="showline">
-
-  </div>
+<div class="showline"></div>
