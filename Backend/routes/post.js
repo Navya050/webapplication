@@ -45,7 +45,7 @@ router.put("/:id", checkAuth, (req, res) => {
     post.content = req.body.content;
   }
 
-  //post = { $set: post }
+  
 
   Posts.findByIdAndUpdate(req.params.id, post, { new: true })
     .then(() => {

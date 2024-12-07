@@ -74,7 +74,7 @@ export class AuthService {
   }
 
   autoAuthUser() {
-    const authInfo = this.getAuthData(); // returns json token and expDate
+    const authInfo = this.getAuthData(); 
     if (!authInfo) {
       return;
     }

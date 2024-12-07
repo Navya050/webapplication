@@ -68,7 +68,7 @@ export class PostListComponent implements OnInit, OnDestroy {
       (posts) => {
         console.log('Posts loaded:', posts);
         this.isLoading = false;
-        this.posts = posts; // Set the posts to the component property
+        this.posts = posts; 
       },
       (error) => {
         console.error('Error loading posts:', error);

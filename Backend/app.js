@@ -7,7 +7,7 @@ const userRoutes = require("./routes/user");
 require("dotenv").config();
 
 const app = express();
-//app.use(bodyParser.urlencoded({extended: false}))
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -31,12 +31,10 @@ mongoose
     console.log(error);
   });
 
-//post the data to the database
+
 
 app.use("/api/posts", postRoutes);
 app.use("/api/user", userRoutes);
 
-// app.listen(3000, () => {
-//     console.log('sever listening on port:3000');
-// });
+
 module.exports = app;

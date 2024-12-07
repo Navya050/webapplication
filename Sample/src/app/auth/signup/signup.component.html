@@ -1,6 +1,5 @@
 <mat-card>
   <form #signupForm="ngForm" (ngSubmit)="onSignUp(signupForm)">
-    <!-- Email Field -->
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Email</mat-label>
       <input
@@ -20,7 +19,7 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- Password Field -->
+    
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Password</mat-label>
       <input
@@ -40,7 +39,7 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- Submit Button -->
+    
     <button mat-raised-button color="primary" type="submit">Sign Up</button>
   </form>
 </mat-card>

@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,9 +26,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { NewsComponent } from './news/news.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-//import { HeaderComponentComponent } from './header-component/header-component.component';
-//import { FooterComponentComponent } from './footer-component/footer-component.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +41,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    //MatSlideToggleModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
