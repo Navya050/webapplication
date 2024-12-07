@@ -1,4 +1,5 @@
 *Title : NewsHub
+
 *Overview:
 NewsHub is a full-stack web application that enables users to create, view, edit, and delete posts through a seamless Single-Page Application (SPA) experience. 
 Built with modern web technologies, the app provides a robust platform for content sharing with secure authentication.
@@ -8,16 +9,19 @@ Built with modern web technologies, the app provides a robust platform for conte
 - Responsive and Intuitive User Interface
 - Secure API Interactions
 *Tech Stack
+
 *Frontend:
 - HTML
 - CSS
 - JavaScript
 - (Recommended Frameworks: React, Angular, or Vue.js)
+
 *Backend:
 - Node.js
 - Express.js
 - MongoDB
 - JWT Authentication
+
 *Project Architecture:
 - Client-Side: Minimalistic UI with a news feed layout
 - Server-Side: Modular architecture with separate routes for users and posts
